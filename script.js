@@ -274,13 +274,14 @@ if (categoryBtns.length > 0) {
 }
 
 // ========================================
-// 🎵 BACKGROUND MUSIC PLAYER - FIXED
+// 🎵 BACKGROUND MUSIC PLAYER - HIDDEN BY DEFAULT
 // ========================================
 
 // Get audio element
 const audio = document.getElementById('bgAudio');
 let isPlaying = false;
 let currentTrack = 'sad';
+let playerVisible = false;
 
 // Track list
 const tracks = {
@@ -298,6 +299,28 @@ const tracks = {
     }
 };
 
+// Show/Hide player
+function showPlayer(show) {
+    const playerDiv = document.querySelector('.audio-player');
+    if (!playerDiv) return;
+    
+    if (show) {
+        playerDiv.style.display = 'block';
+        playerDiv.style.opacity = '0';
+        playerDiv.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => {
+            playerDiv.style.opacity = '1';
+        }, 10);
+        playerVisible = true;
+    } else {
+        playerDiv.style.opacity = '0';
+        setTimeout(() => {
+            playerDiv.style.display = 'none';
+        }, 500);
+        playerVisible = false;
+    }
+}
+
 // Create audio player controls
 function createAudioControls() {
     const playerDiv = document.querySelector('.audio-player');
@@ -306,8 +329,9 @@ function createAudioControls() {
         return;
     }
 
-    playerDiv.style.display = 'block';
-    playerDiv.innerHTML = '';
+    // Start hidden
+    playerDiv.style.display = 'none';
+    playerDiv.style.opacity = '0';
 
     const controls = document.createElement('div');
     controls.className = 'audio-controls';
@@ -338,17 +362,15 @@ function setupAudioControls() {
     const volumeSlider = document.getElementById('volumeSlider');
     const trackNameEl = document.getElementById('trackName');
     
-    // Play/Pause - FIXED
+    // Play/Pause
     if (playPauseBtn) {
         playPauseBtn.addEventListener('click', function() {
             if (isPlaying) {
-                // PAUSE music
                 audio.pause();
                 isPlaying = false;
                 this.innerHTML = '<i class="fas fa-play"></i>';
                 console.log('⏸ Music paused');
             } else {
-                // PLAY music
                 const track = tracks[currentTrack];
                 if (track) {
                     audio.src = track.file;
@@ -358,13 +380,12 @@ function setupAudioControls() {
                     isPlaying = true;
                     this.innerHTML = '<i class="fas fa-pause"></i>';
                     console.log('▶ Music playing: ' + currentTrack);
-                    // Update track name
                     if (trackNameEl) {
                         trackNameEl.textContent = tracks[currentTrack].name;
                     }
                 }).catch((error) => {
                     console.error('Playback error:', error);
-                    showToast('⚠️ Click play to start music. Browser may block auto-play.', 'error');
+                    showToast('⚠️ Click play to start music.', 'error');
                 });
             }
         });
@@ -399,7 +420,6 @@ function setupAudioControls() {
             changeTrack('next');
         });
         
-        // Update track name when changed
         audio.addEventListener('loadeddata', function() {
             if (trackNameEl) {
                 trackNameEl.textContent = tracks[currentTrack]?.name || 'Sad';
@@ -424,24 +444,20 @@ function changeTrack(direction) {
     currentTrack = trackNames[currentIndex];
     const track = tracks[currentTrack];
     
-    // Update audio source
     audio.src = track.file;
     audio.load();
     
-    // Update track name
     const trackNameEl = document.getElementById('trackName');
     if (trackNameEl) {
         trackNameEl.textContent = track.name;
     }
     
-    // Auto-play if was playing
     if (isPlaying) {
         audio.play().catch((err) => {
             console.error('Auto-play failed:', err);
         });
     }
     
-    // Update play/pause button icon
     const playPauseBtn = document.getElementById('playPauseBtn');
     if (playPauseBtn) {
         if (isPlaying) {
@@ -455,7 +471,7 @@ function changeTrack(direction) {
 }
 
 // ========================================
-// AMBIENT CONTROLS - FIXED
+// AMBIENT CONTROLS - SHOW PLAYER ON SONG SELECT
 // ========================================
 const ambientBtns = document.querySelectorAll('.ambient-btn');
 
@@ -473,11 +489,15 @@ ambientBtns.forEach(btn => {
             isPlaying = false;
             const playBtn = document.getElementById('playPauseBtn');
             if (playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            // HIDE the player when music is off
+            showPlayer(false);
             showToast('🔇 Music turned off', 'info');
             return;
         }
         
-        // UPDATED TRACK MAP
+        // SHOW the player when a song is selected
+        showPlayer(true);
+        
         const trackMap = {
             'sad': 'sad',
             'qawwali': 'qawwali',
@@ -495,14 +515,12 @@ ambientBtns.forEach(btn => {
                 trackNameEl.textContent = track.name;
             }
             
-            // Play the selected track
             audio.play().then(() => {
                 isPlaying = true;
                 const playBtn = document.getElementById('playPauseBtn');
                 if (playBtn) playBtn.innerHTML = '<i class="fas fa-pause"></i>';
             }).catch((err) => {
                 console.error('Playback error:', err);
-                // If auto-play is blocked, set playing state but show play icon
                 const playBtn = document.getElementById('playPauseBtn');
                 if (playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
                 showToast('🎵 Click play to start music', 'info');
@@ -601,11 +619,13 @@ console.log('🇵🇰 Authentic Pakistani Flavors Since 2020');
 document.addEventListener('DOMContentLoaded', () => {
     createAudioControls();
     
-    // Set default track
+    // Player starts hidden
+    showPlayer(false);
+    
     if (audio) {
         audio.src = 'assets/music/sad.mp3';
         audio.load();
-        console.log('🎵 Audio player initialized! Click play to start music.');
+        console.log('🎵 Audio player initialized! Click Sad, Qawwali, or Romantic to start music.');
         console.log('📂 Music files should be in: assets/music/');
         console.log('   - sad.mp3');
         console.log('   - qawwali.mp3');
