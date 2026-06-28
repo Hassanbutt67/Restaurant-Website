@@ -274,7 +274,7 @@ if (categoryBtns.length > 0) {
 }
 
 // ========================================
-// 🎵 BACKGROUND MUSIC PLAYER - UPDATED
+// 🎵 BACKGROUND MUSIC PLAYER - FIXED
 // ========================================
 
 // Get audio element
@@ -282,7 +282,7 @@ const audio = document.getElementById('bgAudio');
 let isPlaying = false;
 let currentTrack = 'sad';
 
-// Track list - UPDATED NAMES
+// Track list
 const tracks = {
     sad: {
         name: 'Sad',
@@ -338,52 +338,72 @@ function setupAudioControls() {
     const volumeSlider = document.getElementById('volumeSlider');
     const trackNameEl = document.getElementById('trackName');
     
+    // Play/Pause - FIXED
     if (playPauseBtn) {
-        playPauseBtn.addEventListener('click', togglePlayPause);
-    }
-    
-    if (prevTrackBtn) {
-        prevTrackBtn.addEventListener('click', () => changeTrack('prev'));
-    }
-    
-    if (nextTrackBtn) {
-        nextTrackBtn.addEventListener('click', () => changeTrack('next'));
-    }
-    
-    if (volumeSlider) {
-        volumeSlider.addEventListener('input', (e) => {
-            if (audio) {
-                audio.volume = e.target.value / 100;
+        playPauseBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                // PAUSE music
+                audio.pause();
+                isPlaying = false;
+                this.innerHTML = '<i class="fas fa-play"></i>';
+                console.log('⏸ Music paused');
+            } else {
+                // PLAY music
+                const track = tracks[currentTrack];
+                if (track) {
+                    audio.src = track.file;
+                    audio.load();
+                }
+                audio.play().then(() => {
+                    isPlaying = true;
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                    console.log('▶ Music playing: ' + currentTrack);
+                    // Update track name
+                    if (trackNameEl) {
+                        trackNameEl.textContent = tracks[currentTrack].name;
+                    }
+                }).catch((error) => {
+                    console.error('Playback error:', error);
+                    showToast('⚠️ Click play to start music. Browser may block auto-play.', 'error');
+                });
             }
         });
     }
     
+    // Previous track
+    if (prevTrackBtn) {
+        prevTrackBtn.addEventListener('click', function() {
+            changeTrack('prev');
+        });
+    }
+    
+    // Next track
+    if (nextTrackBtn) {
+        nextTrackBtn.addEventListener('click', function() {
+            changeTrack('next');
+        });
+    }
+    
+    // Volume control
+    if (volumeSlider) {
+        volumeSlider.addEventListener('input', function(e) {
+            if (audio) {
+                audio.volume = this.value / 100;
+            }
+        });
+    }
+    
+    // Audio ended - auto play next
     if (audio) {
-        audio.addEventListener('ended', () => changeTrack('next'));
+        audio.addEventListener('ended', function() {
+            changeTrack('next');
+        });
         
-        audio.addEventListener('loadeddata', () => {
+        // Update track name when changed
+        audio.addEventListener('loadeddata', function() {
             if (trackNameEl) {
                 trackNameEl.textContent = tracks[currentTrack]?.name || 'Sad';
             }
-        });
-    }
-}
-
-// Toggle play/pause
-function togglePlayPause() {
-    const btn = document.getElementById('playPauseBtn');
-    if (!audio) return;
-    
-    if (isPlaying) {
-        audio.pause();
-        isPlaying = false;
-        if (btn) btn.innerHTML = '<i class="fas fa-play"></i>';
-    } else {
-        audio.play().then(() => {
-            isPlaying = true;
-            if (btn) btn.innerHTML = '<i class="fas fa-pause"></i>';
-        }).catch(() => {
-            showToast('🎵 Click play to start music', 'info');
         });
     }
 }
@@ -404,32 +424,47 @@ function changeTrack(direction) {
     currentTrack = trackNames[currentIndex];
     const track = tracks[currentTrack];
     
+    // Update audio source
     audio.src = track.file;
     audio.load();
     
+    // Update track name
     const trackNameEl = document.getElementById('trackName');
     if (trackNameEl) {
         trackNameEl.textContent = track.name;
     }
     
+    // Auto-play if was playing
     if (isPlaying) {
-        audio.play().catch(() => {});
+        audio.play().catch((err) => {
+            console.error('Auto-play failed:', err);
+        });
+    }
+    
+    // Update play/pause button icon
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    if (playPauseBtn) {
+        if (isPlaying) {
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        } else {
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
     }
     
     showToast(`🎵 Now playing: ${track.name} music`, 'success');
 }
 
 // ========================================
-// AMBIENT CONTROLS - UPDATED
+// AMBIENT CONTROLS - FIXED
 // ========================================
 const ambientBtns = document.querySelectorAll('.ambient-btn');
 
 ambientBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', function() {
         ambientBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        this.classList.add('active');
         
-        const sound = btn.dataset.sound;
+        const sound = this.dataset.sound;
         
         if (!audio) return;
         
@@ -460,11 +495,18 @@ ambientBtns.forEach(btn => {
                 trackNameEl.textContent = track.name;
             }
             
+            // Play the selected track
             audio.play().then(() => {
                 isPlaying = true;
                 const playBtn = document.getElementById('playPauseBtn');
                 if (playBtn) playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            }).catch(() => {});
+            }).catch((err) => {
+                console.error('Playback error:', err);
+                // If auto-play is blocked, set playing state but show play icon
+                const playBtn = document.getElementById('playPauseBtn');
+                if (playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                showToast('🎵 Click play to start music', 'info');
+            });
             
             const soundNames = {
                 'sad': '🎵 Sad Music',
@@ -477,11 +519,81 @@ ambientBtns.forEach(btn => {
 });
 
 // ========================================
+// BLOG CATEGORY FILTER
+// ========================================
+const blogCategoryBtns = document.querySelectorAll('.blog-categories .category-btn');
+const blogCards = document.querySelectorAll('.blog-card');
+
+if (blogCategoryBtns.length > 0) {
+    blogCategoryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            blogCategoryBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const category = btn.dataset.category;
+            
+            blogCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.3s ease';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+// ========================================
+// GALLERY CATEGORY FILTER
+// ========================================
+const galleryFilterBtns = document.querySelectorAll('.gallery-filter-btn');
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+if (galleryFilterBtns.length > 0) {
+    galleryFilterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            galleryFilterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const filter = btn.dataset.filter;
+            
+            galleryItems.forEach(item => {
+                if (filter === 'all' || item.dataset.category === filter) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fadeIn 0.3s ease';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+// ========================================
+// LOAD MORE BLOG POSTS
+// ========================================
+const loadMoreBtn = document.getElementById('loadMoreBlog');
+
+if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', () => {
+        showToast('📝 More blog posts coming soon!', 'info');
+    });
+}
+
+// ========================================
 // CONSOLE GREETING
 // ========================================
 console.log('🍽️ Welcome to Single Butt Restaurant!');
-console.log('📧 For inquiries: info@singlebutt.com');
+console.log('✨ Features:');
+console.log('   🎵 Background Music (Sad, Qawwali, Romantic)');
+console.log('   🎯 Mood-Based Menu Suggestions');
+console.log('   🥤 Drink Pairing Calculator');
+console.log('   📸 Guest Photo Wall');
+console.log('   📝 Blog & Gallery Pages');
+console.log('📧 Email: info@singlebutt.com');
 console.log('📱 Phone: +92 300 1234567');
+console.log('🇵🇰 Authentic Pakistani Flavors Since 2020');
 
 // ========================================
 // INITIALIZE AUDIO ON PAGE LOAD
@@ -489,10 +601,14 @@ console.log('📱 Phone: +92 300 1234567');
 document.addEventListener('DOMContentLoaded', () => {
     createAudioControls();
     
+    // Set default track
     if (audio) {
         audio.src = 'assets/music/sad.mp3';
         audio.load();
         console.log('🎵 Audio player initialized! Click play to start music.');
-        console.log('🎵 Tracks: Sad, Qawwali, Romantic');
+        console.log('📂 Music files should be in: assets/music/');
+        console.log('   - sad.mp3');
+        console.log('   - qawwali.mp3');
+        console.log('   - romantic.mp3');
     }
 });
