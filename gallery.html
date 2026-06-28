@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | Single Butt Restaurant</title>
+    <meta name="description" content="Explore our visual journey through authentic Pakistani cuisine at Single Butt Restaurant" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-utensils"></i>
+                    <span>Single Butt</span>
+                    <span style="font-size: 0.8rem; font-family: var(--font-secondary);">Restaurant</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="index.html#reservation" class="btn btn-primary btn-sm">Book a Table</a>
+                <button class="hamburger" id="hamburger">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE HERO ===== -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our <span class="highlight">Gallery</span></h1>
+            <p>A visual journey through our culinary creations and dining experiences</p>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY FILTERS ===== -->
+    <section class="gallery-filters section" style="padding: 0 0 2rem 0;">
+        <div class="container">
+            <div class="gallery-categories">
+                <button class="gallery-filter-btn active" data-filter="all">All</button>
+                <button class="gallery-filter-btn" data-filter="dishes">Dishes</button>
+                <button class="gallery-filter-btn" data-filter="ambiance">Ambiance</button>
+                <button class="gallery-filter-btn" data-filter="events">Events</button>
+                <button class="gallery-filter-btn" data-filter="desserts">Desserts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY SECTION ===== -->
+    <section class="gallery-section section" style="padding-top: 0;">
+        <div class="container">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery Item 1 - Dish -->
+                <div class="gallery-item" data-category="dishes">
+                    <div class="gallery-image">🍛</div>
+                    <div class="gallery-overlay">
+                        <h3>Chicken Biryani</h3>
+                        <p>Signature dish with aromatic spices</p>
+                        <span class="gallery-tag">Popular</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 - Ambiance -->
+                <div class="gallery-item" data-category="ambiance">
+                    <div class="gallery-image">🏛️</div>
+                    <div class="gallery-overlay">
+                        <h3>Dining Hall</h3>
+                        <p>Elegant traditional ambiance</p>
+                        <span class="gallery-tag">Featured</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 - Dish -->
+                <div class="gallery-item" data-category="dishes">
+                    <div class="gallery-image">🥩</div>
+                    <div class="gallery-overlay">
+                        <h3>Nihari</h3>
+                        <p>Slow-cooked beef perfection</p>
+                        <span class="gallery-tag">Chef's Special</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 - Events -->
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-image">🎉</div>
+                    <div class="gallery-overlay">
+                        <h3>Food Festival</h3>
+                        <p>Annual culinary celebration</p>
+                        <span class="gallery-tag">Event</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 - Desserts -->
+                <div class="gallery-item" data-category="desserts">
+                    <div class="gallery-image">🍚</div>
+                    <div class="gallery-overlay">
+                        <h3>Kheer</h3>
+                        <p>Traditional rice pudding</p>
+                        <span class="gallery-tag">Signature</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 - Ambiance -->
+                <div class="gallery-item" data-category="ambiance">
+                    <div class="gallery-image">🌅</div>
+                    <div class="gallery-overlay">
+                        <h3>Outdoor Dining</h3>
+                        <p>Scenic outdoor seating</p>
+                        <span class="gallery-tag">Popular</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 7 - Dish -->
+                <div class="gallery-item" data-category="dishes">
+                    <div class="gallery-image">🍗</div>
+                    <div class="gallery-overlay">
+                        <h3>Chicken Karahi</h3>
+                        <p>Traditional karahi-cooked chicken</p>
+                        <span class="gallery-tag">Signature</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 8 - Events -->
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-image">🎂</div>
+                    <div class="gallery-overlay">
+                        <h3>Birthday Celebrations</h3>
+                        <p>Special occasion arrangements</p>
+                        <span class="gallery-tag">Event</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 9 - Desserts -->
+                <div class="gallery-item" data-category="desserts">
+                    <div class="gallery-image">🍮</div>
+                    <div class="gallery-overlay">
+                        <h3>Gulab Jamun</h3>
+                        <p>Soft milk dumplings in syrup</p>
+                        <span class="gallery-tag">Popular</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 10 - Dish -->
+                <div class="gallery-item" data-category="dishes">
+                    <div class="gallery-image">🥙</div>
+                    <div class="gallery-overlay">
+                        <h3>Seekh Kebab</h3>
+                        <p>Grilled to perfection</p>
+                        <span class="gallery-tag">Chef's Special</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 11 - Ambiance -->
+                <div class="gallery-item" data-category="ambiance">
+                    <div class="gallery-image">✨</div>
+                    <div class="gallery-overlay">
+                        <h3>Traditional Decor</h3>
+                        <p>Rich cultural ambiance</p>
+                        <span class="gallery-tag">Featured</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 12 - Events -->
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-image">🎊</div>
+                    <div class="gallery-overlay">
+                        <h3>Wedding Events</h3>
+                        <p>Celebrate your special day</p>
+                        <span class="gallery-tag">Event</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY STATS ===== -->
+    <section class="quick-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-utensils"></i></div>
+                    <h4>50+ Dishes</h4>
+                    <p>Authentic Pakistani recipes</p>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-camera"></i></div>
+                    <h4>100+ Photos</h4>
+                    <p>Capturing culinary moments</p>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-star"></i></div>
+                    <h4>4.9 Rating</h4>
+                    <p>★ Based on 500+ reviews</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-utensils"></i>
+                        <span>دسترخوان</span>
+                        <span style="font-size: 0.8rem;">Dastarkhwan</span>
+                    </a>
+                    <p>Experience the authentic taste of Pakistan. Every dish is crafted with passion and tradition.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Hours</h4>
+                    <ul>
+                        <li><strong>Mon - Thu:</strong> 11:00 AM - 11:00 PM</li>
+                        <li><strong>Fri - Sat:</strong> 10:00 AM - 12:00 AM</li>
+                        <li><strong>Sun:</strong> 10:00 AM - 11:00 PM</li>
+                        <li><br /></li>
+                        <li><strong>Tea Time:</strong> 4:00 PM - 6:00 PM</li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for exclusive offers and updates.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Your email" required />
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Dastarkhwan. All rights reserved.</p>
+                <p class="footer-legal">
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Cookie Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== TOAST ===== -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

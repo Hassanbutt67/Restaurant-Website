@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog | Single Butt Restaurant</title>
+    <meta name="description" content="Stories, recipes, and culinary insights from Single Butt Restaurant - Authentic Pakistani Cuisine" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-utensils"></i>
+                    <span>Single Butt</span>
+                    <span style="font-size: 0.8rem; font-family: var(--font-secondary);">Restaurant</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="index.html#reservation" class="btn btn-primary btn-sm">Book a Table</a>
+                <button class="hamburger" id="hamburger">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE HERO ===== -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our <span class="highlight">Blog</span></h1>
+            <p>Stories, recipes, and culinary insights from our kitchen</p>
+        </div>
+    </section>
+
+    <!-- ===== BLOG SECTION ===== -->
+    <section class="blog-section section">
+        <div class="container">
+            <!-- Blog Categories -->
+            <div class="blog-categories">
+                <button class="category-btn active" data-category="all">All Posts</button>
+                <button class="category-btn" data-category="recipes">Recipes</button>
+                <button class="category-btn" data-category="culture">Food Culture</button>
+                <button class="category-btn" data-category="events">Events</button>
+                <button class="category-btn" data-category="tips">Cooking Tips</button>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="blog-grid" id="blogGrid">
+                <!-- Blog Post 1 -->
+                <article class="blog-card" data-category="recipes">
+                    <div class="blog-image">🍛</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Recipes</span>
+                        <h3>The Secret to Perfect Biryani</h3>
+                        <p>Discover the traditional techniques and secret spices that make our biryani the best in town. Learn the art of layering rice and meat.</p>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> March 15, 2026</span>
+                            <span><i class="far fa-user"></i> Chef Ahmed</span>
+                            <span><i class="far fa-clock"></i> 5 min read</span>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-card" data-category="culture">
+                    <div class="blog-image">🍽️</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Food Culture</span>
+                        <h3>The Rich History of Pakistani Cuisine</h3>
+                        <p>Explore the rich culinary heritage of Pakistan, from the Mughal Empire to modern-day street food culture and regional specialties.</p>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> March 10, 2026</span>
+                            <span><i class="far fa-user"></i> Chef Fatima</span>
+                            <span><i class="far fa-clock"></i> 7 min read</span>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-card" data-category="recipes">
+                    <div class="blog-image">🥩</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Recipes</span>
+                        <h3>How to Make Nihari at Home</h3>
+                        <p>Step-by-step guide to making authentic Nihari, the beloved slow-cooked beef stew from Lahore. Perfect for a weekend feast.</p>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> March 5, 2026</span>
+                            <span><i class="far fa-user"></i> Chef Usman</span>
+                            <span><i class="far fa-clock"></i> 8 min read</span>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="blog-card" data-category="events">
+                    <div class="blog-image">🎉</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Events</span>
+                        <h3>Dastarkhwan Hosts Food Festival</h3>
+                        <p>Join us for a weekend of culinary celebration featuring live cooking demonstrations, food tastings, and special menu items.</p>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> February 28, 2026</span>
+                            <span><i class="far fa-user"></i> Events Team</span>
+                            <span><i class="far fa-clock"></i> 4 min read</span>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 5 -->
+                <article class="blog-card" data-category="tips">
+                    <div class="blog-image">🌿</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Cooking Tips</span>
+                        <h3>Essential Spices for Pakistani Cooking</h3>
+                        <p>Learn about the essential spices that give Pakistani cuisine its distinctive flavors. From cumin to cardamom, we cover it all.</p>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> February 20, 2026</span>
+                            <span><i class="far fa-user"></i> Chef Ayesha</span>
+                            <span><i class="far fa-clock"></i> 6 min read</span>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 6 -->
+                <article class="blog-card" data-category="culture">
+                    <div class="blog-image">🍵</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Food Culture</span>
+                        <h3>The Art of Chai: Pakistan's Favorite Drink</h3>
+                        <p>Discover the cultural significance of chai in Pakistan and learn how to make the perfect cup of karak chai at home.</p>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> February 15, 2026</span>
+                            <span><i class="far fa-user"></i> Chef Fatima</span>
+                            <span><i class="far fa-clock"></i> 5 min read</span>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="blog-load-more">
+                <button class="btn btn-primary" id="loadMoreBlog">Load More Posts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-utensils"></i>
+                        <span>Single Butt</span>
+                        <span style="font-size: 0.8rem;">Restaurant</span>
+                    </a>
+                    <p>Experience the authentic taste of Pakistan. Every dish is crafted with passion and tradition.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Hours</h4>
+                    <ul>
+                        <li><strong>Mon - Thu:</strong> 11:00 AM - 11:00 PM</li>
+                        <li><strong>Fri - Sat:</strong> 10:00 AM - 12:00 AM</li>
+                        <li><strong>Sun:</strong> 10:00 AM - 11:00 PM</li>
+                        <li><br /></li>
+                        <li><strong>Tea Time:</strong> 4:00 PM - 6:00 PM</li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for exclusive offers and updates.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Your email" required />
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Dastarkhwan. All rights reserved.</p>
+                <p class="footer-legal">
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Cookie Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== TOAST ===== -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

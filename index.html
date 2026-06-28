@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Butt | Authentic Pakistani Cuisine</title>
+    <meta name="description" content="Experience the finest authentic Pakistani cuisine. Book a table, explore our menu, and enjoy an unforgettable culinary journey." />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-utensils"></i>
+                    <span>Single Butt</span>
+                    <span style="font-size: 0.8rem; font-family: var(--font-secondary);">Restaurant</span>
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="#reservation" class="btn btn-primary btn-sm">Book a Table</a>
+                <button class="hamburger" id="hamburger">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- ===== BACKGROUND MUSIC SYSTEM ===== -->
+<div class="audio-player" style="display: none;">
+    <audio id="bgAudio" loop preload="auto">
+        <!-- Default track - will be changed by JavaScript -->
+        <source src="assets/music/classical.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+    <!-- ===== HERO SECTION WITH AMBIENT CONTROLS ===== -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+       <div class="ambient-controls">
+    <button class="ambient-btn" data-sound="sad" title="Sad Music">
+        <i class="fas fa-music"></i>
+        <span>Sad</span>
+    </button>
+    <button class="ambient-btn" data-sound="qawwali" title="Qawwali">
+        <i class="fas fa-microphone"></i>
+        <span>Qawwali</span>
+    </button>
+    <button class="ambient-btn" data-sound="romantic" title="Romantic Music">
+        <i class="fas fa-heart"></i>
+        <span>Romantic</span>
+    </button>
+    <button class="ambient-btn" data-sound="off" title="Turn Off Sound">
+        <i class="fas fa-volume-mute"></i>
+        <span>Mute</span>
+    </button>
+</div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">✦ Since 2020</span>
+<h1>Welcome to <span class="highlight" style="font-size: 0.7em; white-space: nowrap;">Single Butt Restaurant</span></h1>
+                <p>Experience the authentic taste of Pakistan. From sizzling tandoors to aromatic biryanis, every dish tells a story of our rich culinary heritage.</p>
+                <div class="hero-buttons">
+                    <a href="menu.html" class="btn btn-primary">Explore Menu</a>
+                    <a href="#reservation" class="btn btn-secondary">Book a Table</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="number" data-count="1000">0</span>
+                        <span class="label">Happy Customers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number" data-count="80">0</span>
+                        <span class="label">Authentic Dishes</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">4.9</span>
+                        <span class="label">★ Average Rating</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-wrapper">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-star"></i>
+                        <span>Best Desi Restaurant 2025</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-award"></i>
+                        <span>Authentic Pakistani</span>
+                    </div>
+                    <div class="hero-image-placeholder">🍛</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MOOD-BASED MENU SUGGESTIONS ===== -->
+    <section class="mood-section section alt-bg">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">✨ Smart Dining</span>
+                <h2 class="section-title">What's Your <span class="highlight">Mood?</span></h2>
+                <p class="section-subtitle">Tell us how you feel, and we'll recommend the perfect dish</p>
+            </div>
+            <div class="mood-grid">
+                <div class="mood-card" data-mood="romantic">
+                    <div class="mood-icon">❤️</div>
+                    <h3>Romantic</h3>
+                    <p>Perfect for date night</p>
+                </div>
+                <div class="mood-card" data-mood="adventurous">
+                    <div class="mood-icon">🌶️</div>
+                    <h3>Adventurous</h3>
+                    <p>Bold and spicy flavors</p>
+                </div>
+                <div class="mood-card" data-mood="comfort">
+                    <div class="mood-icon">🫂</div>
+                    <h3>Comfort Food</h3>
+                    <p>Warm and satisfying</p>
+                </div>
+                <div class="mood-card" data-mood="healthy">
+                    <div class="mood-icon">🥗</div>
+                    <h3>Healthy</h3>
+                    <p>Fresh and nutritious</p>
+                </div>
+                <div class="mood-card" data-mood="celebratory">
+                    <div class="mood-icon">🎉</div>
+                    <h3>Celebratory</h3>
+                    <p>Special occasion dining</p>
+                </div>
+            </div>
+            <div id="moodResult" class="mood-result">
+                <p>👆 Select a mood to get personalized recommendations</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SPECIALS SECTION ===== -->
+    <section class="specials section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Specials</span>
+                <h2 class="section-title">Today's <span class="highlight">Special Dishes</span></h2>
+                <p class="section-subtitle">Chef's selection of authentic Pakistani favorites</p>
+            </div>
+            <div class="specials-grid">
+                <div class="special-card interactive-dish" data-dish="biryani">
+                    <div class="special-image">🍛</div>
+                    <h3>Chicken Biryani</h3>
+                    <p>Aromatic basmati rice layered with tender chicken, saffron, and secret spices</p>
+                    <span class="price">₨ 850</span>
+                    <a href="menu.html" class="btn btn-outline btn-sm">Order Now</a>
+                    <div class="dish-hover-effect">
+                        <span>✨ Karachi Special</span>
+                    </div>
+                </div>
+                <div class="special-card featured interactive-dish" data-dish="nihari">
+                    <div class="special-badge">Chef's Choice</div>
+                    <div class="special-image">🥩</div>
+                    <h3>Nihari</h3>
+                    <p>Slow-cooked beef shank in rich, spiced gravy with ginger and fresh coriander</p>
+                    <span class="price">₨ 950</span>
+                    <a href="menu.html" class="btn btn-primary btn-sm">Order Now</a>
+                    <div class="dish-hover-effect">
+                        <span>🔥 Lahori Special</span>
+                    </div>
+                </div>
+                <div class="special-card interactive-dish" data-dish="kheer">
+                    <div class="special-image">🍚</div>
+                    <h3>Kheer</h3>
+                    <p>Traditional rice pudding with cardamom, saffron, and topped with nuts</p>
+                    <span class="price">₨ 350</span>
+                    <a href="menu.html" class="btn btn-outline btn-sm">Order Now</a>
+                    <div class="dish-hover-effect">
+                        <span>🍫 Royal Dessert</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WINE PAIRING CALCULATOR ===== -->
+    <section class="wine-section section alt-bg">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">🍷 Drink Pairing</span>
+                <h2 class="section-title">Perfect <span class="highlight">Beverage</span> Companion</h2>
+                <p class="section-subtitle">Find the perfect drink for your meal</p>
+            </div>
+            <div class="wine-calculator">
+                <div class="wine-selector">
+                    <label for="wineDish">What are you eating?</label>
+                    <select id="wineDish">
+                        <option value="biryani">Chicken Biryani</option>
+                        <option value="nihari">Nihari</option>
+                        <option value="kebab">Seekh Kebab</option>
+                        <option value="karahi">Chicken Karahi</option>
+                        <option value="dessert">Kheer</option>
+                    </select>
+                    <button id="wineRecommendBtn" class="btn btn-primary">Find Perfect Drink →</button>
+                </div>
+                <div id="wineResult" class="wine-result">
+                    <div class="wine-glass">🍹</div>
+                    <p>Select a dish to get started</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GUEST PHOTO WALL ===== -->
+    <section class="guest-photos section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">📸 Guest Photos</span>
+                <h2 class="section-title">Our <span class="highlight">Community</span> Gallery</h2>
+                <p class="section-subtitle">Real moments from our guests</p>
+            </div>
+            <div class="photo-wall" id="photoWall">
+                <div class="photo-item">
+                    <div class="photo-placeholder">🍛</div>
+                    <div class="photo-overlay">
+                        <span>Amazing biryani!</span>
+                        <small>@foodie_lahore</small>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <div class="photo-placeholder">🥩</div>
+                    <div class="photo-overlay">
+                        <span>Best nihari ever!</span>
+                        <small>@karachi_foodie</small>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <div class="photo-placeholder">🎂</div>
+                    <div class="photo-overlay">
+                        <span>Birthday celebration!</span>
+                        <small>@birthday_girl</small>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <div class="photo-placeholder">🍚</div>
+                    <div class="photo-overlay">
+                        <span>Kheer was amazing</span>
+                        <small>@sweet_tooth</small>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <div class="photo-placeholder">🍗</div>
+                    <div class="photo-overlay">
+                        <span>Best karahi in town!</span>
+                        <small>@karahi_lover</small>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <div class="photo-placeholder">🥙</div>
+                    <div class="photo-overlay">
+                        <span>Seekh kebabs were perfect</span>
+                        <small>@kebab_king</small>
+                    </div>
+                </div>
+            </div>
+            <div class="photo-upload">
+                <button id="addPhotoBtn" class="btn btn-secondary">
+                    <i class="fas fa-camera"></i> Share Your Moment
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== QUICK INFO ===== -->
+    <section class="quick-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-clock"></i></div>
+                    <h4>Opening Hours</h4>
+                    <p>Mon - Thu: 11:00 AM - 11:00 PM</p>
+                    <p>Fri - Sun: 10:00 AM - 12:00 AM</p>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h4>Our Location</h4>
+                    <p>123 Food Street,</p>
+                    <p>Lahore, Pakistan</p>
+                    <a href="#" class="info-link">Get Directions →</a>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-phone"></i></div>
+                    <h4>Reservations</h4>
+                    <p><a href="tel:+923001234567">+92 300 1234567</a></p>
+                    <p><a href="mailto:info@dastarkhwan.com">info@dastarkhwan.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RESERVATION SECTION ===== -->
+    <section id="reservation" class="reservation section alt-bg">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Reservations</span>
+                <h2 class="section-title">Book Your <span class="highlight">Table</span></h2>
+                <p class="section-subtitle">Secure your dining experience with us</p>
+            </div>
+            <div class="reservation-grid">
+                <div class="reservation-form">
+                    <form id="reservationForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="resName">Full Name</label>
+                                <input type="text" id="resName" placeholder="Ahmed Khan" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="resEmail">Email Address</label>
+                                <input type="email" id="resEmail" placeholder="ahmed@example.com" required />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="resPhone">Phone Number</label>
+                                <input type="tel" id="resPhone" placeholder="+92 300 1234567" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="resGuests">Number of Guests</label>
+                                <select id="resGuests">
+                                    <option value="1">1 Guest</option>
+                                    <option value="2" selected>2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5 Guests</option>
+                                    <option value="6+">6+ Guests</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="resDate">Date</label>
+                                <input type="date" id="resDate" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="resTime">Time</label>
+                                <input type="time" id="resTime" required />
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="resMessage">Special Requests</label>
+                            <textarea id="resMessage" rows="3" placeholder="Any dietary restrictions or special occasions..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary full-width">Book Table</button>
+                    </form>
+                </div>
+                <div class="reservation-info">
+                    <div class="info-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Why Book With Us?</h3>
+                        <ul>
+                            <li>✓ Instant confirmation</li>
+                            <li>✓ Best table guaranteed</li>
+                            <li>✓ Special occasion arrangements</li>
+                            <li>✓ Flexible cancellation</li>
+                            <li>✓ VIP lounge access</li>
+                        </ul>
+                        <div class="phone-highlight">
+                            <i class="fas fa-phone"></i>
+                            <span>Call us: <strong>+92 300 1234567</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Testimonials</span>
+                <h2 class="section-title">What Our <span class="highlight">Guests Say</span></h2>
+            </div>
+            <div class="testimonials-grid" id="testimonialsGrid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"The best Pakistani food I've ever had! The biryani was absolutely amazing and the nihari was to die for."</p>
+                    <div class="guest">
+                        <span class="name">Ahmed Raza</span>
+                        <span class="date">Visited March 2026</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Dastarkhwan brings the authentic taste of Lahore to life. The ambiance and service are top-notch!"</p>
+                    <div class="guest">
+                        <span class="name">Fatima Ali</span>
+                        <span class="date">Visited February 2026</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Amazing food and wonderful staff. The karahi is the best in town. Will definitely be coming back!"</p>
+                    <div class="guest">
+                        <span class="name">Usman Malik</span>
+                        <span class="date">Visited January 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-utensils"></i>
+                        <span>Single Butt</span>
+                        <span style="font-size: 0.8rem;">Restaurant</span>
+                    </a>
+                    <p>Experience the authentic taste of Pakistan. Every dish is crafted with passion and tradition.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Hours</h4>
+                    <ul>
+                        <li><strong>Mon - Thu:</strong> 11:00 AM - 11:00 PM</li>
+                        <li><strong>Fri - Sat:</strong> 10:00 AM - 12:00 AM</li>
+                        <li><strong>Sun:</strong> 10:00 AM - 11:00 PM</li>
+                        <li><br /></li>
+                        <li><strong>Tea Time:</strong> 4:00 PM - 6:00 PM</li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for exclusive offers and updates.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Your email" required />
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Dastarkhwan. All rights reserved.</p>
+                <p class="footer-legal">
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Cookie Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== TOAST ===== -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
